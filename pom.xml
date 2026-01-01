@@ -56,6 +56,20 @@
             <type>pom</type>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+        <!-- API -->
+                <dependency>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                    <version>${jaxb.version}</version>
+                </dependency>
     </dependencies>
 
     <build>
@@ -107,5 +121,7 @@
         <jersey.version>2.28</jersey.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jetty.version>9.0.6.v20130930</jetty.version>
+        <jaxb.version>2.3.1</jaxb.version>
+        <lombok.version>1.18.42</lombok.version>
     </properties>
 </project>
