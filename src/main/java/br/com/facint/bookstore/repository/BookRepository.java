@@ -50,4 +50,15 @@ public class BookRepository {
     public void updateBook(Book book) {
         books.put(book.getId(), book);
     }
+
+
+    private static BookRepository bookRepository;
+
+    public static BookRepository getInstance() {
+        if (bookRepository == null) {
+            bookRepository = new BookRepository();
+        }
+
+        return bookRepository;
+    }
 }

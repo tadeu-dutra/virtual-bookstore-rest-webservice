@@ -21,15 +21,7 @@ import br.com.facint.bookstore.repository.BookRepository;
 @Path("book")
 public class BookResource {
     
-    private static BookRepository bookRepository;
-
-    public static BookRepository getInstance() {
-        if (bookRepository == null) {
-            bookRepository = new BookRepository();
-        }
-
-        return bookRepository;
-    }
+    private BookRepository bookRepository = BookRepository.getInstance();
 
     @GET
     @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
