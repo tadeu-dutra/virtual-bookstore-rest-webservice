@@ -80,3 +80,7 @@ curl -X PUT http://localhost:8080/virtual-bookstore/book/ISBN-1234   -H "Content
 
 It will return a 204 status (No Content)
 
+
+### i) HATEOAS
+SearchItem.java - add test to getBookByIsbn
+

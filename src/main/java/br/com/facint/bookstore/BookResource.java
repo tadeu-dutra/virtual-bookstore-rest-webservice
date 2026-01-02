@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Link;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
@@ -18,6 +19,7 @@ import br.com.facint.bookstore.exception.BookExistentException;
 import br.com.facint.bookstore.exception.BookNotFoundException;
 import br.com.facint.bookstore.model.Book;
 import br.com.facint.bookstore.model.Catalog;
+import br.com.facint.bookstore.model.SearchItem;
 import br.com.facint.bookstore.repository.BookRepository;
 
 @Path("book")
@@ -35,10 +37,22 @@ public class BookResource {
 
     @GET
     @Path("/{isbn}")
-    public Book getBookByIsbn(@PathParam("isbn") String isbn) {
+    public SearchItem getBookByIsbn(@PathParam("isbn") String isbn) {
 
         try {
-            return bookRepository.getBookByIsbn(isbn);
+            Book book = bookRepository.getBookByIsbn(isbn);
+            SearchItem item = new SearchItem();
+            item.setBook(book);
+
+            Link link = Link.fromUri("/cart" + book.getId())
+                            .rel("cart")
+                            .type("POST")
+                            .build();
+            
+            item.addLimk(link);
+
+            return item;
+
         } catch (BookNotFoundException e) {
             throw new WebApplicationException(Status.NOT_FOUND);
         }
