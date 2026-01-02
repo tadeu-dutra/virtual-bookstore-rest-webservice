@@ -9,9 +9,6 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import lombok.Data;
-
-@Data
 @XmlRootElement(name = "book")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Book {
@@ -33,4 +30,19 @@ public class Book {
 
     @XmlElement
     private List<Author> author = new ArrayList<Author>();
+
+    public Book() {}
+
+    public Book(Long id, String title, String isbn, String genre, Double price, List<Author> author) {
+        this.id = id;
+        this.title = title;
+        this.isbn = isbn;
+        this.genre = genre;
+        this.price = price;
+        this.author = author;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

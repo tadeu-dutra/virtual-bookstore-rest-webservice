@@ -6,9 +6,6 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import lombok.Data;
-
-@Data
 @XmlRootElement(name = "author")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Author {
@@ -18,4 +15,11 @@ public class Author {
 
     @XmlElement
     private String name;
+
+    public Author() {}
+
+    public Author(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
