@@ -14,6 +14,16 @@ public class BookRepository {
     
     private static Map<Long, Book> books = new HashMap<>();
 
+    private static BookRepository bookRepository;
+
+    public static BookRepository getInstance() {
+        if (bookRepository == null) {
+            bookRepository = new BookRepository();
+        }
+
+        return bookRepository;
+    }
+    
     public BookRepository() {
         Author author1 = new Author(1L, "Author 1");
         Author author2 = new Author(2L, "Author 2");
@@ -51,14 +61,11 @@ public class BookRepository {
         books.put(book.getId(), book);
     }
 
-
-    private static BookRepository bookRepository;
-
-    public static BookRepository getInstance() {
-        if (bookRepository == null) {
-            bookRepository = new BookRepository();
+    public void removeBook(Long id) {
+        if (books.containsKey(id)) {
+            books.remove(id);
+        } else {
+            throw new BookNotFoundException();
         }
-
-        return bookRepository;
     }
 }

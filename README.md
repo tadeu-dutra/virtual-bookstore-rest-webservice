@@ -58,7 +58,25 @@ curl -X POST http://localhost:8080/virtual-bookstore/book   -H "Content-Type: ap
     }]
   }'
 
-g) Add exception to avoid duplicate book
+### g) Add exception to avoid duplicate book
 
 BookExistentException
+
+### h) update book
+
+curl -X PUT http://localhost:8080/virtual-bookstore/book/ISBN-1234   -H "Content-Type: application/json"   --data '{
+    "id": 1,
+    "title": "Book X",
+    "isbn": "ISBN-1010",
+    "genre": "Genre A",
+    "price": 1.99,
+    "author": [{
+      "id": 7,
+      "name": "Author 1"
+    }]
+  }'
+
+### h) removeBook
+
+It will return a 204 status (No Content)
 

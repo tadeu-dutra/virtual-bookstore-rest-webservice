@@ -1,6 +1,7 @@
 package br.com.facint.bookstore;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -76,5 +77,16 @@ public class BookResource {
         }
 
         return Response.ok().entity(book).build();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public void removeBook(@PathParam("id") Long id) {
+        try {
+            bookRepository.removeBook(id);
+        } catch (Exception e) {
+            throw new WebApplicationException(Status.NOT_FOUND);
+        }
     }
 }
