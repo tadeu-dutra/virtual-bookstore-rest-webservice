@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.Response.Status;
 
+import br.com.facint.bookstore.exception.BookExistentException;
 import br.com.facint.bookstore.exception.BookNotFoundException;
 import br.com.facint.bookstore.model.Book;
 import br.com.facint.bookstore.model.Catalog;
@@ -23,7 +24,7 @@ public class BookResource {
     private BookRepository bookRepository = new BookRepository();
 
     @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
     public Catalog getBooks() {
         Catalog catalog = new Catalog();
         catalog.setBooks(bookRepository.getBooks());
@@ -42,9 +43,14 @@ public class BookResource {
     }
 
     @POST
-    @Consumes(MediaType.APPLICATION_XML)
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response addBook(Book book) {
-        bookRepository.addBook(book);
+
+        try {
+            bookRepository.addBook(book);
+        } catch (BookExistentException e) {
+            throw new WebApplicationException(Status.CONFLICT);
+        }
 
         java.net.URI uriLocation = UriBuilder
             .fromPath("book/{isbn}")

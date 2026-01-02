@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import br.com.facint.bookstore.exception.BookExistentException;
 import br.com.facint.bookstore.exception.BookNotFoundException;
 import br.com.facint.bookstore.model.Author;
 import br.com.facint.bookstore.model.Book;
@@ -38,6 +39,11 @@ public class BookRepository {
     }
 
     public void addBook(Book book) {
+        
+        if (books.containsKey(book.getId())) {
+            throw new BookExistentException();
+        }
+        
         books.put(book.getId(), book);
     }
 }
