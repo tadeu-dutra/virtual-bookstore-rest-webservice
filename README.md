@@ -46,3 +46,19 @@ curl -X POST http://localhost:8080/virtual-bookstore/book/ \
   </author>
 </book>'
 
+curl -X POST http://localhost:8080/virtual-bookstore/book   -H "Content-Type: application/json"   -H "Accept: application/json"   --data '{
+    "id": 3,
+    "title": "Book C",
+    "isbn": "ISBN-5678",
+    "genre": "Genre C",
+    "price": 199.99,
+    "author": [{
+      "id": 3,
+      "name": "Author 3"
+    }]
+  }'
+
+g) Add exception to avoid duplicate book
+
+BookExistentException
+
