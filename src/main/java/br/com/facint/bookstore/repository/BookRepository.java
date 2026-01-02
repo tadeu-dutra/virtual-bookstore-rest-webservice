@@ -46,4 +46,8 @@ public class BookRepository {
         
         books.put(book.getId(), book);
     }
+
+    public void updateBook(Book book) {
+        books.put(book.getId(), book);
+    }
 }
