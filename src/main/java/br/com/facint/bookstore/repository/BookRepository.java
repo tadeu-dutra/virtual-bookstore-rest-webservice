@@ -10,7 +10,7 @@ import br.com.facint.bookstore.model.Book;
 
 public class BookRepository {
     
-    private Map<Long, Book> books = new HashMap<>();
+    private static Map<Long, Book> books = new HashMap<>();
 
     public BookRepository() {
         Author author1 = new Author(1L, "Author 1");
@@ -23,5 +23,16 @@ public class BookRepository {
 
     public List<Book> getBooks() {
         return new ArrayList<>(books.values());
+    }
+
+    public Book getBookByIsbn(String isbn) {
+        
+        for (Book book : books.values()) {
+            if (isbn.equals(book.getIsbn())) {
+                return book;
+            }
+        }
+
+        return null;
     }
 }

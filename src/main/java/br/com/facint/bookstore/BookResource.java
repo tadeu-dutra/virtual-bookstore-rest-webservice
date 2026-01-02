@@ -1,9 +1,8 @@
 package br.com.facint.bookstore;
 
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -17,10 +16,16 @@ public class BookResource {
     private BookRepository bookRepository = new BookRepository();
 
     @GET
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Catalog getBooks() {
         Catalog catalog = new Catalog();
         catalog.setBooks(bookRepository.getBooks());
         return catalog;
+    }
+
+    @GET
+    @Path("/{isbn}")
+    public Book getBookByIsbn(@PathParam("isbn") String isbn) {
+        return bookRepository.getBookByIsbn(isbn);
     }
 }

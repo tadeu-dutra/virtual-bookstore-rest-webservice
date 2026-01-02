@@ -45,4 +45,8 @@ public class Book {
     public Long getId() {
         return id;
     }
+
+    public String getIsbn() {
+        return isbn;
+    }
 }
