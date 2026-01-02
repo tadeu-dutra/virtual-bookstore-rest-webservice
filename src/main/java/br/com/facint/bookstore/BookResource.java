@@ -8,6 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import br.com.facint.bookstore.model.Book;
+import br.com.facint.bookstore.model.Catalog;
 import br.com.facint.bookstore.repository.BookRepository;
 
 @Path("book")
@@ -17,7 +18,9 @@ public class BookResource {
 
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Book> getBooks() {
-        return bookRepository.getBooks();
+    public Catalog getBooks() {
+        Catalog catalog = new Catalog();
+        catalog.setBooks(bookRepository.getBooks());
+        return catalog;
     }
 }
