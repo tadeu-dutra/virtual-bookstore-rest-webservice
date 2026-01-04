@@ -30,9 +30,8 @@ public class PostClient {
                                 .target(response.getLocation())
                                 .request(MediaType.APPLICATION_XML)
                                 .get(SearchItem.class);
-    
-
             System.out.println(item.getBook().getTitle());
+
         } else if (response.getStatus() == Status.BAD_REQUEST.getStatusCode()) {
             System.out.println("Please verify if data is correct..");
         }   
