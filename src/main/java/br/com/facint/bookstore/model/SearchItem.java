@@ -36,8 +36,4 @@ public class SearchItem {
     public List<Link> getLinks() {
         return links;
     }
-
-    public void setLinks(List<Link> links) {
-        this.links = links;
-    }
 }
