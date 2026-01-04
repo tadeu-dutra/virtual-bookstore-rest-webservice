@@ -22,9 +22,12 @@ curl -X GET "http://localhost:8080/virtual-bookstore/book/ISBN-1234"
 
 GET     /book
 GET     /book/{id}
-POST    /book
+- Testar com Accept json and xml
+- check status code 200
+- check <searchItem> tag with <book> + <links>
+POST    /book       needs Content-Type as either json or xml (based on @Consumes annotation). Create tests validating 201, varying Accept and Content-Type with both json and xml. Also, test duplicate id (conflict)
 PUT     /book/{id}
-DELETE  /book/{id}
+DELETE  /book/{id} - should return No Content (void)
 
 ### e) Use of the custom BookNotFoundException to return 404
 

@@ -12,8 +12,8 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Link;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriBuilder;
 
 import br.com.facint.bookstore.exception.BookExistentException;
 import br.com.facint.bookstore.exception.BookNotFoundException;
@@ -76,7 +76,7 @@ public class BookResource {
     }
 
     @PUT
-    @PathParam("/{isbn}")
+    @Path("/{isbn}")
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response updateBook(@PathParam("isbn") String isbn, Book book) {
         try {
