@@ -24,7 +24,7 @@ public class BookRepository {
         return bookRepository;
     }
     
-    public BookRepository() {
+    private BookRepository() {
         Author author1 = new Author(1L, "Author 1");
         Author author2 = new Author(2L, "Author 2");
         Book book1 = new Book(1L, "Book A", "ISBN-1234", "Genre A", 23.99, List.of(author1));
