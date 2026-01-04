@@ -18,6 +18,8 @@ public class Catalog {
     @XmlElement(name = "book")
     private List<Book> books = new ArrayList<Book>();
 
+    public Catalog() {}
+
     public List<Book> getBooks() {
         return books;
     }

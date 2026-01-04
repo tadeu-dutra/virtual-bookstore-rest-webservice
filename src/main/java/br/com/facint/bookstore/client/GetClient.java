@@ -12,7 +12,7 @@ public class GetClient {
         Catalog catalog = ClientBuilder.newClient()
                         .target("http://localhost:8080/virtual-bookstore")
                         .path("book")
-                        .request(MediaType.APPLICATION_JSON)
+                        .request(MediaType.APPLICATION_XML)
                         .get(Catalog.class);
 
         for (Book book : catalog.getBooks()) {

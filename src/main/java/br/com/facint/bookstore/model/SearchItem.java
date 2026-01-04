@@ -21,6 +21,8 @@ public class SearchItem {
     @XmlJavaTypeAdapter(Link.JaxbAdapter.class)
     private List<Link> links = new ArrayList<Link>();
 
+    public SearchItem() {}
+
     public void addLimk(Link link) {
         links.add(link);
     }
